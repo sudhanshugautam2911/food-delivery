@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
 import { motion } from "framer-motion";
 
@@ -10,6 +10,7 @@ import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+
 
 const Header = () => {
   const firebaseAuth = getAuth(app);
@@ -50,6 +51,17 @@ const Header = () => {
       cartShow: !cartShow,
     });
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.matches("#menu-cart")) {
+        setIsMenu(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
@@ -95,13 +107,13 @@ const Header = () => {
             )}
           </div>
 
-          <div className="relative">
+          <div className="relative" onClick={login}>
             <motion.img
               whileTap={{ scale: 0.6 }}
               src={user ? user.photoURL : Avatar}
               className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
               alt="userprofile"
-              onClick={login}
+              id="menu-cart"
             />
             {isMenu && (
               <motion.div
@@ -109,8 +121,9 @@ const Header = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.6 }}
                 className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
+
               >
-                {user && user.email === "gautamsudhanshu2911@gmail.com" && (
+                {user && (user.email === "gautamsudhanshu2911@gmail.com" || user.email === "exehacker824@gmail.com" || user.email === "usingh2k22@gmail.com" || user.email === "neerajsirawag@gmail.com" || user.email === "mohitmayank40@gmail.com") && (
                   <Link to={"/createItem"}>
                     <p
                       className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base"
@@ -161,6 +174,7 @@ const Header = () => {
             className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
             alt="userprofile"
             onClick={login}
+            id="menu-cart"
           />
           {isMenu && (
             <motion.div

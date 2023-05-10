@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RiRefreshFill } from "react-icons/ri";
 
@@ -37,12 +37,27 @@ const CartContainer = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
   };
 
+  // tried to hide cart on outside click (not working)
+  // const cartRef = useRef(null);
+  // useEffect(() => {
+  //   const handleDocumentClick = (event) => {
+  //     if (cartRef.current && !cartRef.current.contains(event.target)) {
+  //       showCart();
+  //     }
+  //   };
+  //   document.addEventListener("click", handleDocumentClick);
+  //   return () => {
+  //     document.removeEventListener("click", handleDocumentClick);
+  //   };
+  // }, [showCart]);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 200 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 200 }}
       className="fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]"
+      // ref={cartRef}
     >
       <div className="w-full flex items-center justify-between p-4 cursor-pointer">
         <motion.div whileTap={{ scale: 0.75 }} onClick={showCart}>
