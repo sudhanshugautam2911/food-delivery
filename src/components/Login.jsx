@@ -127,7 +127,7 @@ const Login = () => {
                 <form className="w-[350px] h-[90vh] rounded-xl flex flex-col items-center bg-white bg-opacity-30 backdrop-filter backdrop-blur-md backdrop-saturate-150">
                     <div className='flex items-center justify-center mt-8'>
                         <img className="w-16 mr-5" src={Logo} alt="darklogo" />
-                        <p className="text-headingColor text-2xl font-bold">In-Campus Delivery</p>
+                        <p className="text-headingColor text-2xl font-bold">Yumplatter</p>
                     </div>
                     <div className="w-full p-6 space-y-6">
                         <h2 className="font-titleFont text-3xl font-bold">Sign in</h2>
@@ -135,7 +135,7 @@ const Login = () => {
                             {/* EMAIL START HERE */}
                             <div className="flex flex-col gap-2">
                                 <p className="text-sm  font-medium">
-                                    Email or mobile phone number
+                                    Email
                                 </p>
                                 <input
                                     onChange={handleEmail}
@@ -218,7 +218,7 @@ const Login = () => {
 
                     <Link className="w-full " to="/registration">
                         <button className="w-full  text-sm py-2 mt-4 bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b border border-zinc-400 rounded-full active:border-yellow-800 active:shadow-amazonInput">
-                            Create your Amazon account
+                            Create your account
                         </button>
                     </Link>
                     <p className='text-xs text-gray-600 mt-4'>OR</p>

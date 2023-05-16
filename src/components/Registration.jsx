@@ -56,6 +56,17 @@ const Registration = () => {
             .toLowerCase()
             .match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     };
+    // const validateInput = (input) => {
+    //     const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //     const phonePattern = /^\d{10}$/;
+
+    //     return String(input).match(emailPattern) || String(input).match(phonePattern);
+    // };
+
+    // const emailOrPhoneValidation = (value) => {
+    //     return validateInput(value.toLowerCase());
+    // };
+
 
     // Onclike registration
     const handleRegistration = (e) => {
@@ -137,7 +148,7 @@ const Registration = () => {
                 <form className="w-[350px] h-[95vh] flex flex-col items-center bg-white bg-opacity-30 backdrop-filter backdrop-blur-md backdrop-saturate-150">
                     <div className='flex items-center justify-center mt-6'>
                         <img className="w-16 mr-5" src={Logo} alt="darklogo" />
-                        <p className="text-headingColor text-2xl font-bold">In-Campus Delivery</p>
+                        <p className="text-headingColor text-2xl font-bold">Yumplatter </p>
                     </div>
                     <div className="w-full p-6 space-y-4">
                         <h1 className="font-titleFont text-3xl font-medium">
@@ -162,7 +173,7 @@ const Registration = () => {
                                 )}
                             </div>
                             <div className="flex flex-col gap-2">
-                                <h1 className="text-sm font-medium">Email or phone number</h1>
+                                <h1 className="text-sm font-medium">Email</h1>
                                 <input
                                     onChange={handleEmail}
                                     value={email}

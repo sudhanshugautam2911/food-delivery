@@ -44,7 +44,6 @@ function App() {
                 </Routes>
               </div>
             )}
-
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/registration" element={<Registration />} />
