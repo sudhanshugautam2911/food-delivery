@@ -10,6 +10,7 @@ import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopu
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import { app } from "../firebase.config";
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const auth = getAuth(app);
@@ -133,7 +134,7 @@ const Login = () => {
                         <div className="flex flex-col gap-5">
                             {/* EMAIL START HERE */}
                             <div className="flex flex-col gap-2">
-                                <p className="text-sm font-medium">
+                                <p className="text-sm  font-medium">
                                     Email or mobile phone number
                                 </p>
                                 <input
@@ -216,12 +217,13 @@ const Login = () => {
                     </p>
 
                     <Link className="w-full " to="/registration">
-                        <button className="w-full text-sm py-2 mt-4 bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b border border-zinc-400 rounded-full active:border-yellow-800 active:shadow-amazonInput">
+                        <button className="w-full  text-sm py-2 mt-4 bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b border border-zinc-400 rounded-full active:border-yellow-800 active:shadow-amazonInput">
                             Create your Amazon account
                         </button>
                     </Link>
                     <p className='text-xs text-gray-600 mt-4'>OR</p>
-                    <p onClick={Googlelogin} className="w-full flex items-center justify-center cursor-pointer bg-slate-200 text-sm py-2 mt-4 border border-zinc-400 rounded-full">
+                    <p onClick={Googlelogin} className="w-full flex items-center justify-center cursor-pointer bg-slate-200 text-sm text-titleFont py-2 mt-4 border border-zinc-400 rounded-full">
+                        <span className='mx-2 text-xl'> <FcGoogle /> </span>
                         Sign In With Google
                     </p>
                 </form>
