@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Delivery from "../img/delivery.png";
 import HeroBg from "../img/heroBg.png";
 import { heroData } from "../utils/data";
 
+// import { AnimatePresence, motion } from "framer-motion";
 
 const HomeContainer = () => {
 
@@ -13,6 +14,16 @@ const HomeContainer = () => {
       behavior: 'smooth'
     });
   }
+
+  // const [text, setText] = useState("The Fastest Delivery in Your Campus");
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setText((prevText) => prevText + "!");
+  //   }, 3000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <section
@@ -33,15 +44,32 @@ const HomeContainer = () => {
           </div>
         </div>
 
+        {/* here */}
         <p className="text-[2.5rem] lg:text-[4.5rem] font-bold tracking-wide text-headingColor">
-          The Fastest Delivery in
-          <span className="text-orange-600 text-[3rem] lg:text-[5rem]">
-            Your Campus
-          </span>
-        </p>
-{/* Home page tag Line */}
+            The Fastest Delivery in
+            <span className="text-orange-600 text-[3rem] lg:text-[5rem]">
+              Your Campus
+            </span>
+          </p>
+
+{/* will work in future (keep animating text so that it looks cool) */}
+        {/* <AnimatePresence>
+          <motion.p className="text-[2.5rem] lg:text-[4.5rem] font-bold tracking-wide text-headingColor"
+            key={text}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            {text}
+          </motion.p>
+        </AnimatePresence> */}
+
+
+
+        {/* Home page tag Line */}
         <p className="text-base text-textColor text-center md:text-left md:w-[80%]">
-        Stay cool and satisfied this summer with our in-campus food delivery service. Beat the heat while enjoying your favorite meals, delivered straight to your doorstep.
+          Stay cool and satisfied this summer with our in-campus food delivery service. Beat the heat while enjoying your favorite meals, delivered straight to your doorstep.
         </p>
 
         <button

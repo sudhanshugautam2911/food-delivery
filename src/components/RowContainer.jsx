@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import NotFound from "../img/NotFound.svg";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+// import { Popover, Tooltip } from '@headlessui/react';
 
 const RowContainer = ({ flag, data, scrollValue }) => {
   const rowContainer = useRef();
@@ -29,20 +30,20 @@ const RowContainer = ({ flag, data, scrollValue }) => {
   }, [items]);
 
   return (
+    // products in fast food section ( 2nd section )
     <div
       ref={rowContainer}
-      className={`w-full flex items-center gap-3  my-12 scroll-smooth  ${
-        flag
-          ? "overflow-x-scroll scrollbar-none"
+      className={`w-full flex items-center gap-3  my-12 scroll-smooth  ${flag
+          ? "overflow-x-scroll scrollbar-hide md:overflow-x-auto"
           : "overflow-x-hidden flex-wrap justify-center"
-      }`}
+        }`}
     >
       {data && data.length > 0 ? (
         data.map((item) => (
-          
+
           <div
             key={item?.id}
-            className="w-275 h-[175px] min-w-[275px] md:w-300 md:min-w-[300px]  bg-cardOverlay rounded-lg py-2 px-4  my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-evenly relative"
+            className="w-275 h-[200px] min-w-[275px] md:w-300 md:min-w-[300px]  bg-cardOverlay rounded-lg py-2 px-4  my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-evenly relative"
           >
             <div className="w-full flex items-center justify-between">
               {/* image of available item */}
@@ -70,9 +71,14 @@ const RowContainer = ({ flag, data, scrollValue }) => {
             {/* Available Items Details */}
 
             <div className="w-full flex flex-col items-end justify-end -mt-8">
-              <p className="text-textColor font-semibold text-base md:text-lg">
+
+              <p className="text-textColor font-semibold text-base md:text-lg max-w-[140px] line-clamp-2 text-right">
                 {item?.title}
               </p>
+              
+            {/* second method */}
+            
+            {/* calories and price start here */}
               <p className="mt-1 text-sm text-gray-500">
                 {item?.calories} Calories
               </p>
@@ -82,6 +88,9 @@ const RowContainer = ({ flag, data, scrollValue }) => {
                 </p>
               </div>
             </div>
+
+           
+
           </div>
         ))
       ) : (

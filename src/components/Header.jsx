@@ -7,7 +7,7 @@ import { app } from "../firebase.config";
 
 import Logo from "../img/logo.png";
 import Avatar from "../img/avatar.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 
@@ -17,23 +17,31 @@ const Header = () => {
   const provider = new GoogleAuthProvider();
 
   const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
+  const navigate = useNavigate();
 
   const [isMenu, setIsMenu] = useState(false);
 
   const login = async () => {
     if (!user) {
-      const {
-        user: { refreshToken, providerData },
-      } = await signInWithPopup(firebaseAuth, provider);
-      dispatch({
-        type: actionType.SET_USER,
-        user: providerData[0],
-      });
-      localStorage.setItem("user", JSON.stringify(providerData[0]));
+      navigate("/login");
     } else {
       setIsMenu(!isMenu);
     }
   };
+  // const login = async () => {
+  //   if (!user) {
+  //     const {
+  //       user: { refreshToken, providerData },
+  //     } = await signInWithPopup(firebaseAuth, provider);
+  //     dispatch({
+  //       type: actionType.SET_USER,
+  //       user: providerData[0],
+  //     });
+  //     localStorage.setItem("user", JSON.stringify(providerData[0]));
+  //   } else {
+  //     // setIsMenu(!isMenu);
+  //   }
+  // };
 
   const logout = () => {
     setIsMenu(false);
@@ -62,6 +70,7 @@ const Header = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
 
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
@@ -107,14 +116,18 @@ const Header = () => {
             )}
           </div>
 
-          <div className="relative" onClick={login}>
+          {/* put onClick={login} in the*/}
+          <div className="relative" >
+            {/* <Link to="./login"> */}
             <motion.img
               whileTap={{ scale: 0.6 }}
               src={user ? user.photoURL : Avatar}
               className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
               alt="userprofile"
               id="menu-cart"
+              onClick={login}
             />
+            {/* </Link> */}
             {isMenu && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.6 }}
@@ -123,7 +136,8 @@ const Header = () => {
                 className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
 
               >
-                {user && (user.email === "gautamsudhanshu2911@gmail.com" || user.email === "exehacker824@gmail.com" || user.email === "usingh2k22@gmail.com" || user.email === "neerajsirawag@gmail.com" || user.email === "mohitmayank40@gmail.com") && (
+                {/* user admin permission */}
+                {user && (user.email === "gautamsudhanshu2911@gmail.com" || user.email === "usingh2k22@gmail.com" || user.email === "neerajsirawag@gmail.com" || user.email === "mohitmayank40@gmail.com") && (
                   <Link to={"/createItem"}>
                     <p
                       className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base"
@@ -173,7 +187,8 @@ const Header = () => {
             src={user ? user.photoURL : Avatar}
             className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
             alt="userprofile"
-            onClick={login}
+            // onClick={login}
+            // onClick={navigate("./login")}
             id="menu-cart"
           />
           {isMenu && (
@@ -183,7 +198,7 @@ const Header = () => {
               exit={{ opacity: 0, scale: 0.6 }}
               className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
             >
-              {user && user.email === "gautamsudhanshu2911@gmail.com" && (
+              {user && (user.email === "gautamsudhanshu2911@gmail.com" || user.email === "usingh2k22@gmail.com" || user.email === "neerajsirawag@gmail.com" || user.email === "mohitmayank40@gmail.com") && (
                 <Link to={"/createItem"}>
                   <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">
                     New Item <MdAdd />

@@ -16,7 +16,7 @@ const MainContainer = () => {
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center ">
       <HomeContainer />
-
+ 
       {/* First section, Fresh fruits */}
     
       <section className="w-full my-6">
