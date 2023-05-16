@@ -187,8 +187,7 @@ const Header = () => {
             src={user ? user.photoURL : Avatar}
             className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
             alt="userprofile"
-            // onClick={login}
-            // onClick={navigate("./login")}
+            onClick={login}
             id="menu-cart"
           />
           {isMenu && (
