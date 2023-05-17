@@ -108,9 +108,11 @@ const Header = () => {
             <li onClick={handleScrollDown} className="text-lg text-textColor hover:text-gray-900 duration-100 transition-all ease-in-out cursor-pointer">
               Menu
             </li>
-            <li className="text-lg text-textColor hover:text-gray-900 duration-100 transition-all ease-in-out cursor-pointer">
-              About Us
-            </li>
+            <Link to={"./aboutus"}>
+              <li className="text-lg text-textColor hover:text-gray-900 duration-100 transition-all ease-in-out cursor-pointer">
+                About Us
+              </li>
+            </Link>
             <li className="text-lg text-textColor hover:text-gray-900 duration-100 transition-all ease-in-out cursor-pointer">
               Service
             </li>
@@ -224,14 +226,14 @@ const Header = () => {
 
               <ul className="flex flex-col ">
                 <li
-                  onClick={() => {navigate("./"); setIsMenu(false) }}
+                  onClick={() => { navigate("./"); setIsMenu(false) }}
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
                 >
                   Home
                 </li>
                 <li
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
-                  onClick={() => {setIsMenu(false); handleScrollDownMobile();}}
+                  onClick={() => { setIsMenu(false); handleScrollDownMobile(); }}
                 >
                   Menu
                 </li>

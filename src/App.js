@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { actionType } from "./context/reducer";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
+import Aboutus from "./components/AboutUs";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -41,6 +42,7 @@ function App() {
                 <Routes>
                   <Route path="/*" element={<MainContainer />} />
                   <Route path="/createItem" element={<CreateContainer />} />
+                  <Route path="/aboutus" element={<Aboutus />} />
                 </Routes>
               </div>
             )}
